@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | My project</title>
+    <title>Unity WebGL Player | flappy_rk</title>
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
-    <canvas id="unity-canvas" width=auto height=auto tabindex="-1" style="width: 100%; height: 100%; background: #231F20"></canvas>
+    <canvas id="unity-canvas" width=1920 height=1080 tabindex="-1" style="width: 1920px; height: 1080px; background: #231F20"></canvas>
     <script src="Build/flapp.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
@@ -30,11 +30,34 @@
         codeUrl: "Build/flapp.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
-        productName: "My project",
+        productName: "flappy_rk",
         productVersion: "1.0",
         // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       });
     </script>
+    <script type="text/javascript">
+      function enforceLandscape() {
+          if (window.innerHeight > window.innerWidth) {
+              // If the device is in portrait mode, rotate it to landscape
+              var msg = "Please rotate your device to landscape mode.";
+              alert(msg);
+              document.body.style.visibility = 'hidden';
+              document.body.style.overflow = 'hidden';
+              document.body.style.transform = 'rotate(90deg)';
+          }
+      }
+  
+      window.addEventListener("orientationchange", function () {
+          enforceLandscape();
+      });
+  
+      window.addEventListener("resize", function () {
+          enforceLandscape();
+      });
+  
+      enforceLandscape(); // Call the function initially
+  </script>
+  
   </body>
 </html>
